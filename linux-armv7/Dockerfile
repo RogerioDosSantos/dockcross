@@ -1,5 +1,5 @@
-FROM dockcross/base:latest
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+FROM rogersantos/base:latest
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 # Add the cross compiler sources
 RUN echo "deb http://emdebian.org/tools/debian/ jessie main" >> /etc/apt/sources.list && \

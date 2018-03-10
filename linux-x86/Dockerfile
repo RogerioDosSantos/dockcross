@@ -1,5 +1,5 @@
-FROM dockcross/base:latest
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+FROM rogersantos/base:latest
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 RUN dpkg --add-architecture i386 && \
   apt-get update && apt-get -y install \

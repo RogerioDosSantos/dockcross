@@ -1,5 +1,5 @@
-FROM dockcross/base:latest
-MAINTAINER Sergi Alvarez "pancake@nopcode.org"
+FROM rogersantos/base:latest
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 # This is for ARMv5 "legacy" (mipsel) devices which do NOT support hard float
 # VFP instructions (mipshf).

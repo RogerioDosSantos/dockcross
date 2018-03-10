@@ -1,5 +1,5 @@
-FROM dockcross/base:latest
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+FROM rogersantos/base:latest
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 # The cross-compiling emulator
 RUN apt-get update && apt-get install -y \

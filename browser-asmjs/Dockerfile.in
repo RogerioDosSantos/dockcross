@@ -1,5 +1,5 @@
 FROM trzeci/emscripten-slim:sdk-tag-1.37.29-64bit
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 # Revert back to "/bin/sh" as default shell
 # See https://github.com/asRIA/emscripten-docker/blob/master/Dockerfile.in#L4

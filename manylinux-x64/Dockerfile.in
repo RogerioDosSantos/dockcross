@@ -1,5 +1,5 @@
 FROM quay.io/pypa/manylinux1_x86_64:latest
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 ENV DEFAULT_DOCKCROSS_IMAGE dockcross/manylinux-x64
 

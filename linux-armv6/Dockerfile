@@ -1,5 +1,5 @@
-FROM dockcross/base:latest
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+FROM rogersantos/base:latest
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 # Enable 32 bits binaries
 RUN dpkg --add-architecture i386 && \

@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 #include "common.debian"
 

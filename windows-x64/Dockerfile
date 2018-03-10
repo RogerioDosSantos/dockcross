@@ -1,5 +1,5 @@
-FROM dockcross/base:latest
-MAINTAINER Matt McCormick "matt.mccormick@kitware.com"
+FROM rogersantos/base:latest
+MAINTAINER Roger Santos "roger.santos.main@gmail.com"
 
 # WINE is used as an emulator for try_run and tests with CMake.
 # Other dependencies are from the listed MXE requirements:
