@@ -9,6 +9,9 @@ DOCKER = docker
 # Docker organization to pull the images from
 ORG = rogersantos
 
+# Image name prefix
+IMAGE_NAME_PREFIX = dockcross-
+
 # Directory where to generate the dockcross script for each images (e.g bin/dockcross-manylinux-x64)
 BIN = ./bin
 
@@ -20,7 +23,7 @@ GEN_IMAGES = linux-s390x linux-mips manylinux-x86 manylinux-x64 browser-asmjs
 GEN_IMAGE_DOCKERFILES = $(addsuffix /Dockerfile,$(GEN_IMAGES))
 
 # These images are expected to have explicit rules for *both* build and testing
-NON_STANDARD_IMAGES = browser-asmjs manylinux-x64 manylinux-x86
+NON_STANDARD_IMAGES = browser-asmjs manylinux-x64 manylinux-x86 ubuntu-x86
 
 DOCKER_COMPOSITE_SOURCES = common.docker common.debian common.manylinux common.crosstool
 
@@ -59,6 +62,7 @@ $(GEN_IMAGE_DOCKERFILES) Dockerfile: %Dockerfile: %Dockerfile.in $(DOCKER_COMPOS
 		-e '/common.debian/ r common.debian' \
 		-e '/common.manylinux/ r common.manylinux' \
 		-e '/common.crosstool/ r common.crosstool' \
+		-e '/common.ubuntu/ r common.ubuntu' \
 		$< > $@
 
 #
@@ -118,6 +122,23 @@ manylinux-x86.test: manylinux-x86
 	$(BIN)/dockcross-manylinux-x86 /opt/python/cp35-cp35m/bin/python test/run.py
 
 #
+# ubuntu-x86
+#
+
+ubuntu-x86: ubuntu-x86/Dockerfile
+	mkdir -p $@/imagefiles && cp -r imagefiles $@/
+	$(DOCKER) build -t $(ORG)/$(IMAGE_NAME_PREFIX)ubuntu-x86:latest \
+		--build-arg IMAGE=$(ORG)/$(IMAGE_NAME_PREFIX)ubuntu-x86 \
+		--build-arg VCS_REF=`git rev-parse --short HEAD` \
+		--build-arg VCS_URL=`git config --get remote.origin.url` \
+		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+		-f ubuntu-x86/Dockerfile .
+	rm -rf $@/imagefiles
+
+ubuntu-x86.test: ubuntu-x86
+	$(DOCKER) run $(RM) $(ORG)/$(IMAGE_NAME_PREFIX)ubuntu-x86 > $(BIN)/$(IMAGE_NAME_PREFIX)ubuntu-x86 && chmod +x $(BIN)/$(IMAGE_NAME_PREFIX)ubuntu-x86
+
+#
 # base
 #
 
@@ -168,4 +189,4 @@ test.prerequisites:
 
 $(addsuffix .test,base $(IMAGES)): test.prerequisites
 
-.PHONY: base images $(IMAGES) test %.test
+.PHONY: base images $(IMAGES) test %.test 
