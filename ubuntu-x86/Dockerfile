@@ -97,6 +97,8 @@ ENV DEFAULT_DOCKCROSS_IMAGE rogersantos/dockcross-ubuntu-x86
 COPY ubuntu-x86/Toolchain.cmake /usr/lib/${CROSS_TRIPLE}/
 ENV CMAKE_TOOLCHAIN_FILE /usr/lib/${CROSS_TRIPLE}/Toolchain.cmake
 
+WORKDIR /work
+
 COPY ubuntu-x86/linux32-entrypoint.sh /dockcross/
 COPY imagefiles/entrypoint.sh /dockcross/
 COPY imagefiles/* /dockcross/
