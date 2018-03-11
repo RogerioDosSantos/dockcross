@@ -6,37 +6,36 @@ WORKDIR /work
 #### Common Ubuntu Configuration
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update --yes 
-RUN apt-get install --no-install-recommends --yes automake 
-RUN apt-get install --no-install-recommends --yes autogen 
-RUN apt-get install --no-install-recommends --yes bash 
-RUN apt-get install --no-install-recommends --yes build-essential 
-RUN apt-get install --no-install-recommends --yes bc 
-RUN apt-get install --no-install-recommends --yes bzip2 
-RUN apt-get install --no-install-recommends --yes ca-certificates 
-RUN apt-get install --no-install-recommends --yes curl 
-RUN apt-get install --no-install-recommends --yes file 
-RUN apt-get install --no-install-recommends --yes git 
-RUN apt-get install --no-install-recommends --yes gzip 
-RUN apt-get install --no-install-recommends --yes zip 
-RUN apt-get install --no-install-recommends --yes make 
-RUN apt-get install --no-install-recommends --yes cmake 
-RUN apt-get install --no-install-recommends --yes ncurses-dev 
-RUN apt-get install --no-install-recommends --yes pkg-config 
-RUN apt-get install --no-install-recommends --yes libtool 
-RUN apt-get install --no-install-recommends --yes python 
-RUN apt-get install --no-install-recommends --yes python-pip 
-RUN apt-get install --no-install-recommends --yes rsync 
-RUN apt-get install --no-install-recommends --yes sed 
-RUN apt-get install --no-install-recommends --yes ssh 
-RUN apt-get install --no-install-recommends --yes bison 
-RUN apt-get install --no-install-recommends --yes flex 
-RUN apt-get install --no-install-recommends --yes tar 
-RUN apt-get install --no-install-recommends --yes pax 
-RUN apt-get install --no-install-recommends --yes vim 
-RUN apt-get install --no-install-recommends --yes wget 
-RUN apt-get install --no-install-recommends --yes xz-utils
-RUN apt-get clean --yes
+RUN apt-get update --yes && apt-get install --no-install-recommends --yes \
+  automake \
+  autogen \
+  bash \
+  build-essential \
+  bc \
+  bzip2 \
+  ca-certificates \
+  curl \
+  file \
+  git \
+  gzip \
+  zip \
+  make \
+  ncurses-dev \
+  pkg-config \
+  libtool \
+  python \
+  python-pip \
+  rsync \
+  sed \
+  ssh \
+  bison \
+  flex \
+  tar \
+  pax \
+  vim \
+  wget \
+  xz-utils && \
+  apt-get clean --yes
 
 ENV GOSU_VERSION 1.10
 RUN set -x \
